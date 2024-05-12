@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Future Predictions Population Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="grid grid-cols-1 gap-4 p-16 lg:grid-cols-1 justify-center flex lg:gap-8" style="justify-items: center;">
+  <h1>Future Predictions Population Calculator</h1>
+  <label class="form-control w-full max-w-xs">
+    <div class="label">
+      <span class="label-text">Object Name (Only Integers/Numbers)</span>
+    </div>
+    <input id="objectName" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+  </label>
+  <label class="form-control w-full max-w-xs">
+    <div class="label">
+      <span class="label-text">Insert Pop. 2000</span>
+    </div>
+    <input id="pop2000" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+  </label>
+  <label class="form-control w-full max-w-xs">
+    <div class="label">
+      <span class="label-text">Insert Pop. 2010</span>
+    </div>
+    <input id="pop2010" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+  </label>
+  <label class="form-control w-full max-w-xs">
+    <div class="label">
+      <span class="label-text">Insert Pop. 2020</span>
+    </div>
+    <input id="pop2020" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+  </label>
+  <button id="calculateBtn" class="btn btn-outline btn-primary">Calculate</button>
+  <div id="result" class="mt-4"></div>
+</div>
+<script>
+  document.getElementById("calculateBtn").addEventListener("click", function() {
+    // Get object name
+    var objectName = document.getElementById("objectName").value;
+
+    // Get population values
+    var pop2000 = parseInt(document.getElementById("pop2000").value);
+    var pop2010 = parseInt(document.getElementById("pop2010").value);
+    var pop2020 = parseInt(document.getElementById("pop2020").value);
+    var diff2010 = pop2010 - pop2000; // Difference between 2010 and 2000
+    var diff2020 = pop2020 - pop2010; // Difference between 2020 and 2010
+    var totalDiff = diff2020 + diff2010;
+    var percentChange = (totalDiff / pop2000) * 100; // Convert to %
+    var roundedChange = Math.round(percentChange * 100) / 100;
+    var final = roundedChange + "%";
+    
+    // Check
+    var result = "";
+    if (totalDiff > 0) {
+      result = "+" + final;
+    } else if (totalDiff < 0) {
+      result = final;
+    } else {
+      result = "No change in population.";
+    }
+    
+    // Display result
+    var forecastPopulation = pop2020 + totalDiff; // Simple linear projection based on the difference
+    document.getElementById("result").innerHTML = "<p>" + objectName + " Population Forecast for 2030: " + forecastPopulation + "</p>";
+    document.getElementById("result").innerHTML += "<p>Change in population: " + result + "</p>";
+  });
+</script>
+</body>
+</html>
