@@ -1,4 +1,4 @@
-# Kevin R's RBSS Hub https://kevinrinchen-rbss.hub.arcgis.com/
+# https://kevinrinchen-rbss.hub.arcgis.com/
 
 This platform showcases a collection of my projects focused on Remote Sensing and Spatial Sciences. Here, I demonstrate innovative applications of geospatial technology aimed at solving real-world challenges.
 
